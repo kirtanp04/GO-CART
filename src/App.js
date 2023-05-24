@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+import AllProducts from './Pages/AllProducts';
+import ContextFunction from './context/Context';
+import HompPage from './Pages/HompPage';
+import ProductDetails from './Pages/ProductDetails';
+import ShoppingCart from './Pages/ShoppingCart';
+import CheckOut from './Pages/CheckOut';
+import Register from './Pages/Register';
+import Signin from "./Pages/Signin"
+import Account from './Pages/Account';
+import SingleProductCheckOut from './Pages/SingleProductCheckOut';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+      <ContextFunction>
+        <Routes>
+          <Route path='/' element={<HompPage/>}/>
+          <Route path='/allProduct/:categorie' element={<AllProducts/>}/>
+          <Route path='/allProduct/:categorie/:name/:id' element={<ProductDetails/>}></Route>
+          <Route path='/cart' element={<ShoppingCart/>}/>
+          <Route path='/cart/checkout' element={<CheckOut/>}></Route>
+          <Route path='/Go-Cart/Register' element={<Register/>}></Route>
+          <Route path='/Go-Cart/Login' element={<Signin/>}/>
+          <Route path='/Go-Cart/account' element={<Account/>}></Route>
+          <Route path='/allProduct/:name/:qua/checkout' element={<SingleProductCheckOut/>}/>
+        </Routes>
+        </ContextFunction>
+      </BrowserRouter>
+
+    </>
   );
 }
 
